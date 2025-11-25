@@ -459,7 +459,7 @@ Dictionary >> at: key update: updateBlock [
 ]
 
 { #category : 'accessing' }
-Dictionary >> at: key update: updateBlock initial: initBlocktOrValue [
+Dictionary >> at: key update: updateBlock initial: initBlockOrValue [
 	"I am used to update the value at a given key. The updateBlock is passed
 	the existing value, and the result of the block is stored back.
 	If the key does not exist, store the value of the initBlocktOrValue.
@@ -468,7 +468,7 @@ Dictionary >> at: key update: updateBlock initial: initBlocktOrValue [
 	| index |
 	index := self findElementOrNil: key.
 	(array at: index)
-		ifNil: [ self atNewIndex: index put: key -> initBlocktOrValue value]
+		ifNil: [ self atNewIndex: index put: key -> initBlockOrValue value]
 		ifNotNil: [ :assoc | assoc value: (updateBlock value: assoc value) ]
 ]
 
